@@ -17,27 +17,27 @@ module HiddenModulesI18nPatch
   module InstanceMethods
     def l_or_humanize_with_check_for_project_module(s, options={})
       if options[:prefix] == "project_module_"
-        if !@project.nil? and !display_module?(@project, s)
+        if !@project.nil? and !HiddenModulesI18nPatch::display_module?(@project, s)
           return "";
         end
       end
       l_or_humanize_without_check_for_project_module(s, options)
     end
     
-    def display_module?(project, m)
-      
-      hidden_modules = Setting.send("plugin_redmine_hide_modules")[:hidden_projects_modules]
-      if(hidden_modules.is_a?(Hash))
-        hidden_modules = hidden_modules.keys
-      elsif !hidden_modules.is_a?(Array)
-        hidden_modules = []        
-      end
-      
-      if project.module_enabled?(m) || !hidden_modules.include?(m.to_s()) || User.current().admin?
-        return true
-      end
-      false
+  end
+  
+  def self.display_module?(project, m)
+    hidden_modules = Setting.send("plugin_redmine_hide_modules")[:hidden_projects_modules]
+    if(hidden_modules.is_a?(Hash))
+      hidden_modules = hidden_modules.keys
+    elsif !hidden_modules.is_a?(Array)
+      hidden_modules = []        
     end
+    
+    if project.module_enabled?(m) || !hidden_modules.include?(m.to_s()) || User.current().admin?
+      return true
+    end
+    false
   end
   
 end
