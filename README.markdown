@@ -2,9 +2,10 @@
 
 ## Overview
 
-This allows for hiding project modules from the project settings view.  If a 
-module is already enabled, it will still be visible in the project and project
-settings.  Admin will override hiding.
+This allows for hiding project modules from appearing in the project settings 
+view.  If a module is already enabled, it will still be visible in the project 
+and project settings.  Admin will override hiding.  Modules are hidden from 
+the plugin settings page.
 
 It is intended to simplify the UI when creating a new project.
 
