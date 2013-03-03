@@ -1,0 +1,3 @@
+
+<p><%= plugin_setting_multiselect("redmine_hide_modules", :hidden_projects_modules,
+        Redmine::AccessControl.available_project_modules.collect {|m| [l_or_humanize(m, :prefix => "project_module_"), m.to_s]}) %></p>
