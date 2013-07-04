@@ -14,7 +14,6 @@ module HiddenModulesFormTagHelperPatch
 
   module InstanceMethods
     def check_box_tag_with_check_for_project_module(name, value = "1", checked = false, options = {})
-      logger.debug "name = #{name}"
       if name == 'enabled_module_names[]' or name == 'project[enabled_module_names][]'
         if !HiddenModulesI18nPatch::display_module?(@project, value)
           return ""
